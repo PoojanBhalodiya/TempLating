@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Firebase REST API Example</title>
+	<script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
+</head>
+<body>
+	<h1>Firebase REST API Example</h1>
+	<p id="data"></p>
+	<script>
+		// Initialize Firebase
+		const firebaseConfig = {
+			apiKey: "YOUR_API_KEY",
+			authDomain: "YOUR_AUTH_DOMAIN",
+			databaseURL: "YOUR_DATABASE_URL",
+			projectId: "YOUR_PROJECT_ID",
+			storageBucket: "YOUR_STORAGE_BUCKET",
+			messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+			appId: "YOUR_APP_ID"
+		};
+		firebase.initializeApp(firebaseConfig);
+
+		// Make a GET request to Firebase REST API
+		const apiUrl = "https://YOUR_PROJECT_ID.firebaseio.com/YOUR_DATA.json";
+		fetch(apiUrl)
+			.then(response => response.json())
+			.then(data => {
+				// Display data in HTML
+				document.getElementById("data").innerHTML = JSON.stringify(data);
+			})
+			.catch(error => console.error(error));
+	</script>
+</body>
+</html>
